@@ -1,0 +1,1 @@
+java -cp lib/collections-generic-4.01.jar:lib/jaws-bin.jar:lib/jgrapht-core-0.9.0.jar:lib/nlp.jar:lib/stanford-corenlp-3.3.1-models.jar:lib/stanford-corenlp-3.3.1.jar:lib/xom.jar gov.nih.nlm.ling.wrappers.NLPClient indsrv1 22222 ./in ./out false

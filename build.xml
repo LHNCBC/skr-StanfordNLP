@@ -1,0 +1,54 @@
+<project>
+
+           <property name="src.dir" location="src" />
+           <property name="build.dir" location="classes" />
+        <property name="docs.dir" location="docs" />
+
+        <target name="clean">
+                <delete dir="${build.dir}" />
+                <delete dir="${docs.dir}" />
+        </target>
+        
+    <target name="compile">
+        <mkdir dir="classes"/>
+        <!-- <copy todir="classes">
+	    <fileset dir="src">
+	       <include name="**/*.properties"/>
+	    </fileset>
+	    </copy> -->
+        <javac    srcdir="src" destdir="classes"> 
+           <classpath>
+           	<pathelement path="${classpath}"/>
+           	<pathelement location="lib/collections-generic-4.01.jar" />
+	   	<pathelement location="lib/jaws-bin.jar" />
+	        <pathelement location="lib/jgrapht-core-0.9.0.jar" />
+	        <pathelement location="lib/ling.jar" />
+	        <pathelement location="lib/stanford-corenlp-3.3.1.jar" />
+	        <pathelement location="lib/stanford-corenlp-3.3.1-models.jar" />
+	        <pathelement location="lib/xom.jar" />
+           	<!-- <pathelement location="lib/GNormPlus_HK.jar"/> -->
+
+         </classpath>
+        </javac >
+    </target>
+
+    <target name="jar">
+        <mkdir dir="lib"/>
+        <!-- <copy todir="classes">
+	    <fileset dir="src">
+	       <include name="**/*.properties"/>
+	    </fileset>
+	</copy> -->
+        <jar destfile="lib/nlp.jar" basedir="classes">
+            <manifest>
+                <attribute name="Main-Class" value="gov.nih.nlm.ling.wrappers.CoreNLPWrapper"/>
+            </manifest>
+            <include name="**/*.class"/>
+        </jar>
+    </target>
+    
+    <target name="main" depends="clean, compile, jar">
+                    <description>Main target</description>
+        </target>
+
+</project>
